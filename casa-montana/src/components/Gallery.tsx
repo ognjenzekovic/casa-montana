@@ -146,7 +146,7 @@ export function Gallery() {
                     {visible.map((tile) =>
                         tile.kind === 'image' ? (
                             <div className="gallery__tile" key={tile.id}>
-                                <img src={tile.src} alt={tile.alt} />
+                                <img src={tile.src} alt={tile.alt} loading="lazy" decoding="async" />
                             </div>
                         ) : (
                             <div className="gallery__tile gallery__tile--placeholder" key={tile.id}>
