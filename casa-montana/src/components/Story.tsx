@@ -7,7 +7,7 @@ export function Story() {
         <section ref={ref} className="story reveal">
             <div className="story__media">
                 <img
-                    src="/assets/hero.jpeg"
+                    src={`${import.meta.env.BASE_URL}assets/hero.jpeg`}
                     alt="Detalj brvnare — drvena fasada i krov od tamnog lima, okružen šumom."
                 />
             </div>

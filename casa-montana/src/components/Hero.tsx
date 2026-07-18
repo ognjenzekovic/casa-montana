@@ -3,7 +3,7 @@ export function Hero() {
         <header className="hero">
             <div className="hero__media">
                 <img
-                    src="/assets/hero.jpeg"
+                    src={`${import.meta.env.BASE_URL}assets/hero.jpeg`}
                     alt="Casa Montana, brvnara okružena šumom na Kopaoniku, snimljeno dronom u sumrak."
                 />
             </div>
