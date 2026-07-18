@@ -518,6 +518,11 @@ img {
   color: var(--paper);
 }
 
+.gallery__tab--active:hover {
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
 .gallery__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
