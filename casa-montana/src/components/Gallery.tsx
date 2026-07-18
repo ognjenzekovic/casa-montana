@@ -74,7 +74,7 @@ export function Gallery() {
     const visible = active === 'sve' ? TILES : TILES.filter((t) => t.category === active);
 
     useEffect(() => {
-        const onScroll = () => {
+        const measure = () => {
             const section = ref.current;
             const bar = section?.querySelector('.gallery__tabs-bar');
             if (!section || !bar) return;
@@ -83,7 +83,21 @@ export function Gallery() {
             const sectionBottom = section.getBoundingClientRect().bottom;
             setMerged(barTop <= navBottom && sectionBottom > navBottom);
         };
-        onScroll();
+
+        // Coalesce to one measurement per animation frame — see Nav.tsx
+        // for why (uncoalesced scroll handlers can lag behind during fast
+        // scrolling and only catch up once scrolling stops).
+        let ticking = false;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                measure();
+                ticking = false;
+            });
+        };
+
+        measure();
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onScroll);
         return () => {

@@ -157,6 +157,36 @@ img {
   color: var(--ink);
 }
 
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav__link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav__link:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.nav--scrolled .nav__link {
+  color: var(--ink-soft);
+}
+
+.nav--scrolled .nav__link:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
 .nav__cta {
   font-size: 0.78rem;
   font-weight: 500;
@@ -265,7 +295,7 @@ img {
 }
 
 .hero__eyebrow {
-  color: #E7C9A9;
+  color: #fff;
 }
 
 .hero__title {
