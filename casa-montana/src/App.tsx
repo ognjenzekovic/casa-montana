@@ -8,6 +8,7 @@ import { Location } from './components/Location.tsx';
 import { Intro } from './components/Intro.tsx';
 import { Gallery } from './components/Gallery.tsx';
 import { Trust } from './components/Trust.tsx';
+import { Book } from './components/Book.tsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Gallery />
         <Story />
         <Trust />
+        <Book />
         <Location />
         <Closer />
       </main>

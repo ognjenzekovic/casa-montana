@@ -9,7 +9,12 @@ export function Hero() {
             </div>
             <div className="hero__scrim" />
             <div className="hero__content">
-                <p className="eyebrow hero__eyebrow">Kopaonik, Srbija · Na prodaju</p>
+                <div className="hero__tags">
+                    <a className="hero__badge" href="#contact">
+                        Na prodaju
+                    </a>
+                    <p className="eyebrow hero__eyebrow">Kopaonik, Srbija</p>
+                </div>
                 <h1 className="hero__title">
                     Casa <em>Montana</em>
                 </h1>

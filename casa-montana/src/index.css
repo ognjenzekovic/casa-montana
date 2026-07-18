@@ -5,6 +5,7 @@
    ========================================================================== */
 
 :root {
+  --nav-bottom: 5.5rem;
   /* Color: warm paper ground, ink text, one accent used sparingly */
   --ink: #17140F;
   /* warm near-black — headlines, body text     */
@@ -68,6 +69,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, p, blockquote {
+  margin: 0;
+}
+
 a {
   color: inherit;
 }
@@ -113,22 +118,30 @@ img {
   left: 50%;
   transform: translateX(-50%);
   z-index: 40;
-  width: min(94%, 74rem);
+  width: min(calc(100vw - 2 * var(--gutter)), 82rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.25rem;
-  border-radius: 999px;
   background: rgba(23, 20, 15, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
   box-shadow: none;
-  transition: background 0.35s ease, box-shadow 0.35s ease;
+  transition: box-shadow 0.35s ease, border-radius 0.35s ease;
 }
 
 .nav--scrolled {
   background: rgba(247, 243, 234, 0.88);
   box-shadow: 0 8px 24px rgba(23, 20, 15, 0.1);
+}
+
+.nav--merged {
+  background: rgba(247, 243, 234, 1);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 999px 999px 0 0;
+  box-shadow: none;
 }
 
 .nav__mark {
@@ -216,10 +229,39 @@ img {
 .hero__content {
   position: relative;
   z-index: 2;
-  padding: 0 var(--gutter) clamp(3rem, 8vw, 5rem);
+  width: min(calc(100% - 2 * var(--gutter)), 82rem);
+  margin: 0 auto;
+  padding: 0 0 clamp(3rem, 8vw, 5rem);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.hero__tags {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.hero__badge {
+  display: inline-block;
+  background: var(--clay);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.hero__badge:hover {
+  background: #B0663B;
+  transform: translateY(2px);
 }
 
 .hero__eyebrow {
@@ -356,6 +398,12 @@ img {
 /* ---------- Gallery ---------- */
 .gallery {
   padding: var(--section-pad) var(--gutter);
+  background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery__inner {
   max-width: 82rem;
   margin: 0 auto;
 }
@@ -372,6 +420,74 @@ img {
   margin: 0.75rem 0 0;
 }
 
+.gallery__tabs-bar {
+  position: sticky;
+  top: var(--nav-bottom);
+  z-index: 5;
+  max-width: 82rem;
+  margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+  background: rgba(247, 243, 234, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: none;
+  transition: border-radius 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery__tabs-bar--merged {
+  background: rgba(247, 243, 234, 1);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0 0 999px 999px;
+  box-shadow: 0 8px 24px rgba(23, 20, 15, 0.1);
+}
+
+/* Below this width the tabs wrap onto multiple rows, so the bar gets
+   tall — a 999px radius on a tall box carves a deep notch instead of
+   a corner. Cap it to a normal rounded-rect radius here instead. */
+@media (max-width: 719px) {
+  .gallery__tabs-bar {
+    border-radius: 28px;
+  }
+
+  .gallery__tabs-bar--merged {
+    border-radius: 0 0 28px 28px;
+  }
+}
+
+.gallery__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.gallery__tab {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.75rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery__tab:hover {
+  border-color: var(--clay);
+  color: var(--ink);
+}
+
+.gallery__tab--active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
 .gallery__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -380,15 +496,7 @@ img {
 
 @media (min-width: 720px) {
   .gallery__grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  .gallery__tile--wide {
-    grid-column: span 4;
-  }
-
-  .gallery__tile--narrow {
-    grid-column: span 2;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -532,6 +640,80 @@ img {
   color: var(--ink-soft);
 }
 
+/* ---------- Book (rental CTA) ---------- */
+.book {
+  background: var(--paper-raised);
+  padding: var(--section-pad) var(--gutter);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.book__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-h2);
+  margin: 1rem auto 0.75rem;
+  max-width: 20ch;
+}
+
+.book__body {
+  color: var(--ink-soft);
+  max-width: 34rem;
+  margin: 0 auto clamp(2rem, 5vw, 2.75rem);
+}
+
+.book__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.book__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 15rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.book__btn-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.book__btn--booking {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.book__btn--booking:hover {
+  background: var(--clay);
+  transform: translateY(-2px);
+}
+
+.book__btn--airbnb {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+}
+
+.book__btn--airbnb:hover {
+  border-color: var(--clay);
+  color: var(--clay);
+  transform: translateY(-2px);
+}
+
 /* ---------- Location ---------- */
 .location {
   padding: var(--section-pad) var(--gutter);
@@ -626,42 +808,6 @@ img {
   transform: translateY(-2px);
 }
 
-.closer__links {
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding-top: clamp(1.5rem, 4vw, 2.5rem);
-  border-top: 1px solid rgba(247, 243, 234, 0.15);
-}
-
-.closer__links-label {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  color: rgba(247, 243, 234, 0.55);
-  margin-bottom: 1rem;
-}
-
-.closer__links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.closer__links-row a {
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--paper);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(247, 243, 234, 0.4);
-  transition: color 0.25s ease, border-color 0.25s ease;
-}
-
-.closer__links-row a:hover {
-  color: #C9A876;
-  border-color: #C9A876;
-}
-
 .foot {
   padding: 1.75rem var(--gutter) 2.5rem;
   font-size: 0.72rem;
@@ -669,6 +815,23 @@ img {
   text-align: center;
   background: var(--forest);
   color: rgba(247, 243, 234, 0.55);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.foot__link {
+  color: rgba(247, 243, 234, 0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 243, 234, 0.3);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.foot__link:hover {
+  color: var(--paper);
+  border-color: var(--paper);
 }
 
 /* ---------- Reveal-on-scroll ---------- */
