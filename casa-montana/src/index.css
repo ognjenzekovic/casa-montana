@@ -472,6 +472,27 @@ img {
   margin: 0 auto;
 }
 
+.intro__cta {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  padding: 1rem 2.25rem;
+  border-radius: 999px;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.intro__cta:hover {
+  border-color: var(--clay);
+  color: var(--clay);
+  transform: translateY(-2px);
+}
+
 /* ---------- Specs row ---------- */
 .specs {
   background: var(--paper-raised);
@@ -1099,6 +1120,77 @@ img {
 
 .foot__copy {
   color: rgba(247, 243, 234, 0.55);
+}
+
+/* ---------- Blog page ---------- */
+.blog-page {
+  padding: clamp(7rem, 12vw, 9rem) var(--gutter) var(--section-pad);
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.blog-page__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-page__back {
+  align-self: flex-start;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+}
+
+.blog-page__back:hover {
+  color: var(--clay);
+}
+
+.blog-page__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--step-h2);
+  margin: 0.75rem 0 clamp(2.5rem, 6vw, 4rem);
+  max-width: 18ch;
+}
+
+.blog-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+
+.blog-card {
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.blog-card:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.blog-card__date {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 0.5rem;
+}
+
+.blog-card__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--step-pull);
+  margin: 0 0 0.75rem;
+}
+
+.blog-card__excerpt {
+  color: var(--ink-soft);
+  max-width: 42rem;
 }
 
 /* ---------- Reveal-on-scroll ---------- */

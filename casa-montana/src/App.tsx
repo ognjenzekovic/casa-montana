@@ -9,11 +9,15 @@ import { Intro } from './components/Intro.tsx';
 import { Gallery } from './components/Gallery.tsx';
 import { Trust } from './components/Trust.tsx';
 import { Book } from './components/Book.tsx';
+import { BlogPage } from './pages/BlogPage.tsx';
 import { LanguageProvider } from './lib/i18n.tsx';
 import { useLanguage } from './lib/languageContext';
+import { useHashRoute } from './hooks/useHashRoute';
 
 function AppContent() {
   const { t } = useLanguage();
+  const hash = useHashRoute();
+  const isBlog = hash.startsWith('#/blog');
 
   return (
     <>
@@ -23,17 +27,21 @@ function AppContent() {
 
       <Nav />
 
-      <main id="main">
-        <Hero />
-        <Intro />
-        <Specs />
-        <Gallery />
-        <Story />
-        <Trust />
-        <Book />
-        <Location />
-        <Closer />
-      </main>
+      {isBlog ? (
+        <BlogPage />
+      ) : (
+        <main id="main">
+          <Hero />
+          <Intro />
+          <Specs />
+          <Gallery />
+          <Story />
+          <Trust />
+          <Book />
+          <Location />
+          <Closer />
+        </main>
+      )}
 
       <Footer />
     </>

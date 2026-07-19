@@ -11,7 +11,7 @@ export type Translations = {
     skipLink: string;
     nav: { book: string; cta: string; langToggle: string };
     hero: { badge: string; location: string; lead: string; scroll: string };
-    intro: { eyebrow: string; statement: string; body: string };
+    intro: { eyebrow: string; statement: string; body: string; blogCta: string };
     specs: { ariaLabel: string; bedrooms: string; bathrooms: string; living: string; plot: string };
     gallery: {
         eyebrow: string;
@@ -31,6 +31,7 @@ export type Translations = {
     location: { title: string; body: string; mapTitle: string; mapLink: string; mapLang: string };
     closer: { eyebrow: string; title: string; cta: string };
     footer: { copyright: string };
+    blog: { eyebrow: string; title: string; back: string; readMore: string };
 };
 
 const sr: Translations = {
@@ -50,6 +51,7 @@ const sr: Translations = {
         eyebrow: 'O kući',
         statement: 'Kuća građena za jedan život, ne za jedan izdatak.',
         body: 'Casa Montana stoji na kraju naselja, okružena jelovom šumom, deset minuta od Nacionalnog parka Kopaonik. Svaka greda je birana i sečena za ovu kuću — ovo nije katalog, ovo je jedna, konkretna kuća.',
+        blogCta: 'Pročitajte naš blog',
     },
     specs: {
         ariaLabel: 'Osnovni podaci o nekretnini',
@@ -114,6 +116,12 @@ const sr: Translations = {
         cta: 'Zatražite informacije',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Srbija' },
+    blog: {
+        eyebrow: 'Blog',
+        title: 'Vesti i vodiči o Kopaoniku',
+        back: '← Nazad na početnu',
+        readMore: 'Pročitaj više',
+    },
 };
 
 const en: Translations = {
@@ -133,6 +141,7 @@ const en: Translations = {
         eyebrow: 'About the House',
         statement: 'A house built for a lifetime, not a line item.',
         body: 'Casa Montana stands at the edge of the settlement, surrounded by fir forest, ten minutes from Kopaonik National Park. Every beam was chosen and cut for this house — this isn\'t a catalog, it\'s one specific house.',
+        blogCta: 'Read Our Blog',
     },
     specs: {
         ariaLabel: 'Key property details',
@@ -197,6 +206,12 @@ const en: Translations = {
         cta: 'Request Information',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Serbia' },
+    blog: {
+        eyebrow: 'Blog',
+        title: 'Kopaonik News & Guides',
+        back: '← Back to Home',
+        readMore: 'Read more',
+    },
 };
 
 export const translations: Record<Locale, Translations> = { sr, en };

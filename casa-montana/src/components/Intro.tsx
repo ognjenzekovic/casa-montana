@@ -10,6 +10,9 @@ export function Intro() {
             <span className="eyebrow intro__eyebrow">{t.intro.eyebrow}</span>
             <p className="intro__statement">{t.intro.statement}</p>
             <p className="intro__body">{t.intro.body}</p>
+            <a className="intro__cta" href="#/blog">
+                {t.intro.blogCta}
+            </a>
         </section>
     );
 }
