@@ -27,7 +27,7 @@ export type Translations = {
     };
     story: { eyebrow: string; title: string; body: StoryBody };
     trust: { ratingLabel: string; reviewsLabel: string; yearsLabel: string; quote: string; citation: string };
-    book: { eyebrow: string; title: string; body: string; bookingBtn: string; airbnbBtn: string };
+    book: { eyebrow: string; title: string; body: string; bookingBtn: string; airbnbBtn: string; followUs: string };
     location: { title: string; body: string; mapTitle: string; mapLink: string; mapLang: string };
     closer: { eyebrow: string; title: string; cta: string };
     footer: { copyright: string };
@@ -99,6 +99,7 @@ const sr: Translations = {
         body: 'Casa Montana se aktivno izdaje i nosi ocenu 9.8/10 od gostiju. Rezervišite boravak i uverite se lično, pre nego što se odlučite.',
         bookingBtn: 'Rezervišite na Booking.com',
         airbnbBtn: 'Rezervišite na Airbnb-u',
+        followUs: 'Pratite nas na Instagramu',
     },
     location: {
         title: 'Deset minuta od Nacionalnog parka',
@@ -181,6 +182,7 @@ const en: Translations = {
         body: 'Casa Montana is actively rented and holds a 9.8/10 guest rating. Book a stay and see it for yourself before you decide.',
         bookingBtn: 'Book on Booking.com',
         airbnbBtn: 'Book on Airbnb',
+        followUs: 'Follow us on Instagram',
     },
     location: {
         title: 'Ten Minutes from the National Park',

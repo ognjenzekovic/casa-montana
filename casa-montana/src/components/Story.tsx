@@ -21,6 +21,9 @@ export function Story() {
                     <strong>{t.story.body.strong}</strong>
                     {t.story.body.post}
                 </p>
+                <a className="story__cta" href="#contact">
+                    {t.closer.cta}
+                </a>
             </div>
         </section>
     );

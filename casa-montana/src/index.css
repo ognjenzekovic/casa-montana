@@ -787,6 +787,25 @@ img {
   font-weight: 600;
 }
 
+.story__cta {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem 2.25rem;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.story__cta:hover {
+  background: var(--clay);
+  transform: translateY(-2px);
+}
+
 /* ---------- Trust strip ---------- */
 .trust {
   padding: clamp(2.5rem, 5vw, 4rem) var(--gutter);
@@ -920,6 +939,29 @@ img {
   transform: translateY(-2px);
 }
 
+.book__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.book__ig-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex-shrink: 0;
+}
+
+.book__ig:hover {
+  color: var(--clay);
+}
+
 /* ---------- Location ---------- */
 .location {
   padding: var(--section-pad) var(--gutter);
@@ -1028,16 +1070,35 @@ img {
   gap: 0.6rem;
 }
 
-.foot__link {
-  color: rgba(247, 243, 234, 0.75);
+.foot__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--paper);
   text-decoration: none;
-  border-bottom: 1px solid rgba(247, 243, 234, 0.3);
-  transition: color 0.25s ease, border-color 0.25s ease;
+  border: 1px solid rgba(247, 243, 234, 0.4);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-.foot__link:hover {
-  color: var(--paper);
+.foot__ig-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.foot__ig:hover {
+  color: var(--forest);
+  background: var(--paper);
   border-color: var(--paper);
+}
+
+.foot__copy {
+  color: rgba(247, 243, 234, 0.55);
 }
 
 /* ---------- Reveal-on-scroll ---------- */
