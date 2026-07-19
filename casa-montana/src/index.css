@@ -291,6 +291,138 @@ img {
   }
 }
 
+/* Burger menu — phone widths only. Below 640px there isn't room for
+   book/schedule/language inline (or even as the .nav__lang-inline
+   pill), so they collapse into a single button that opens a dropdown
+   instead. Above 640px, .nav__links (existing inline row) handles it. */
+.nav__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Three real, separately-laid-out lines instead of one element plus
+   two pseudo-elements — a single flex column with a fixed `gap`
+   guarantees even, correctly centered spacing with no manual offset
+   math to get wrong. Sized in whole px (not rem) so every line lands
+   on an exact pixel — fractional/sub-pixel positions are what made
+   the lines render at visibly different thicknesses before. The X
+   translate distance (6px) is the exact center-to-center gap this
+   layout produces: 2px line + 4px gap + half of each adjacent 2px
+   line = 6px, not a guessed value — so the two diagonals meet
+   exactly at the middle line's former center instead of missing it. */
+.nav__burger-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 22px;
+}
+
+.nav__burger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+}
+
+.nav--scrolled .nav__burger-line {
+  background: var(--ink);
+}
+
+.nav__burger-lines--open .nav__burger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav__burger-lines--open .nav__burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__burger-lines--open .nav__burger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav__mobile-menu {
+  position: fixed;
+  top: calc(var(--nav-bottom) + 0.6rem);
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 39;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(23, 20, 15, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 0.75rem;
+}
+
+.nav__mobile-menu--scrolled {
+  background: rgba(247, 243, 234, 0.96);
+  box-shadow: 0 8px 24px rgba(23, 20, 15, 0.15);
+}
+
+.nav__mobile-link,
+.nav__mobile-lang {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav__mobile-menu--scrolled .nav__mobile-link,
+.nav__mobile-menu--scrolled .nav__mobile-lang {
+  color: var(--ink);
+}
+
+.nav__mobile-link:hover,
+.nav__mobile-lang:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav__mobile-menu--scrolled .nav__mobile-link:hover,
+.nav__mobile-menu--scrolled .nav__mobile-lang:hover {
+  background: var(--line);
+}
+
+@media (max-width: 640px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__burger {
+    display: inline-flex;
+    position: relative;
+  }
+}
+
+@media (min-width: 641px) {
+  .nav__mobile-menu {
+    display: none;
+  }
+}
+
 .nav__cta {
   font-size: 0.78rem;
   font-weight: 500;

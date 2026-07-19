@@ -5,6 +5,7 @@ export function Nav() {
     const navRef = useRef<HTMLElement | null>(null);
     const [scrolled, setScrolled] = useState(false);
     const [merged, setMerged] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const { locale, setLocale, t } = useLanguage();
 
     useEffect(() => {
@@ -62,8 +63,22 @@ export function Nav() {
         };
     }, []);
 
+    // The mobile menu only exists below the burger breakpoint (see CSS) —
+    // if the window gets resized past it while open (e.g. rotating a
+    // tablet, or a desktop user shrinking the window back up), close it
+    // so it can't get stuck open somewhere it no longer makes sense.
+    useEffect(() => {
+        if (!menuOpen) return;
+        const onResize = () => {
+            if (window.innerWidth > 640) setMenuOpen(false);
+        };
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
+    }, [menuOpen]);
+
     const isScrolled = scrolled || merged;
     const toggleLocale = () => setLocale(locale === 'sr' ? 'en' : 'sr');
+    const closeMenu = () => setMenuOpen(false);
 
     return (
         <>
@@ -86,6 +101,19 @@ export function Nav() {
                         {t.nav.cta}
                     </a>
                 </div>
+                <button
+                    type="button"
+                    className="nav__burger"
+                    aria-expanded={menuOpen}
+                    aria-label={t.nav.menu}
+                    onClick={() => setMenuOpen((open) => !open)}
+                >
+                    <span className={`nav__burger-lines${menuOpen ? ' nav__burger-lines--open' : ''}`}>
+                        <span className="nav__burger-line" />
+                        <span className="nav__burger-line" />
+                        <span className="nav__burger-line" />
+                    </span>
+                </button>
             </nav>
             <button
                 type="button"
@@ -94,6 +122,19 @@ export function Nav() {
             >
                 {t.nav.langToggle}
             </button>
+            {menuOpen && (
+                <div className={`nav__mobile-menu${isScrolled ? ' nav__mobile-menu--scrolled' : ''}`}>
+                    <a className="nav__mobile-link" href="#book" onClick={closeMenu}>
+                        {t.nav.book}
+                    </a>
+                    <a className="nav__mobile-link" href="#contact" onClick={closeMenu}>
+                        {t.nav.cta}
+                    </a>
+                    <button type="button" className="nav__mobile-lang" onClick={toggleLocale}>
+                        {t.nav.langToggle}
+                    </button>
+                </div>
+            )}
         </>
     );
 }

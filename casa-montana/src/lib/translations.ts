@@ -9,7 +9,7 @@ export type Translations = {
     pageTitle: string;
     metaDescription: string;
     skipLink: string;
-    nav: { book: string; cta: string; langToggle: string };
+    nav: { book: string; cta: string; langToggle: string; menu: string };
     hero: { badge: string; location: string; lead: string; scroll: string };
     intro: { eyebrow: string; statement: string; body: string; blogCta: string };
     specs: { ariaLabel: string; bedrooms: string; bathrooms: string; living: string; plot: string };
@@ -40,7 +40,7 @@ const sr: Translations = {
     metaDescription:
         'Ručno građena brvnara na Kopaoniku, 10 minuta od Nacionalnog parka. Retka prilika za posed u srcu planine.',
     skipLink: 'Preskoči na sadržaj',
-    nav: { book: 'Rezervišite boravak', cta: 'Zakažite obilazak', langToggle: 'EN' },
+    nav: { book: 'Rezervišite boravak', cta: 'Zakažite obilazak', langToggle: 'EN', menu: 'Meni' },
     hero: {
         badge: 'Na prodaju',
         location: 'Kopaonik, Srbija',
@@ -130,7 +130,7 @@ const en: Translations = {
     metaDescription:
         'A hand-built log cabin in Kopaonik, 10 minutes from the National Park. A rare chance to own land at the heart of the mountain.',
     skipLink: 'Skip to content',
-    nav: { book: 'Book a Stay', cta: 'Schedule a Viewing', langToggle: 'SR' },
+    nav: { book: 'Book a Stay', cta: 'Schedule a Viewing', langToggle: 'SR', menu: 'Menu' },
     hero: {
         badge: 'For Sale',
         location: 'Kopaonik, Serbia',

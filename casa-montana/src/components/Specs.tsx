@@ -5,12 +5,11 @@ export function Specs() {
     const ref = useReveal<HTMLElement>();
     const { t } = useLanguage();
 
-    // TODO: replace [XXX] placeholders with real figures once confirmed
     const SPECS = [
         { value: '2', label: t.specs.bedrooms },
         { value: '2', label: t.specs.bathrooms },
-        { value: '[XXX]', unit: 'm²', label: t.specs.living },
-        { value: '[XXX]', unit: 'm²', label: t.specs.plot },
+        { value: '200', unit: 'm²', label: t.specs.living },
+        { value: '700', unit: 'm²', label: t.specs.plot },
     ];
 
     return (
