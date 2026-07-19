@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { useLanguage } from '../lib/languageContext';
 
 export function Nav() {
@@ -80,13 +81,29 @@ export function Nav() {
     const toggleLocale = () => setLocale(locale === 'sr' ? 'en' : 'sr');
     const closeMenu = () => setMenuOpen(false);
 
+    // Acts as a home link: clears any #/blog route and scrolls to top.
+    // Smooth here (unlike the instant route-switch reset in App.tsx) is
+    // intentional — clicked from the main page itself it should feel
+    // like a normal "back to top", not a page reload. If already on
+    // "#" the hash won't change, so hashchange won't fire and App's
+    // route-switch effect won't run this scroll for us — hence the
+    // explicit scrollTo here regardless of current route.
+    const goHome = (event: MouseEvent) => {
+        event.preventDefault();
+        if (window.location.hash) window.location.hash = '';
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        closeMenu();
+    };
+
     return (
         <>
             <nav
                 ref={navRef}
                 className={`nav${isScrolled ? ' nav--scrolled' : ''}${merged ? ' nav--merged' : ''}`}
             >
-                <span className="nav__mark">Casa&nbsp;Montana</span>
+                <a className="nav__mark" href="#" onClick={goHome}>
+                    Casa&nbsp;Montana
+                </a>
                 <div className="nav__links">
                     <a className="nav__link" href="#book">
                         {t.nav.book}
