@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../lib/languageContext';
 
@@ -56,12 +56,24 @@ function navBottomPx() {
     return nav ? nav.getBoundingClientRect().bottom : 90;
 }
 
+// Extra scroll distance (in px) applied on top of "bar flush with
+// nav" when a filter tab is clicked. The bar itself is sticky and
+// can't scroll past that flush position (CSS caps it there), so this
+// doesn't move the bar — it scrolls the grid content underneath it
+// further up, landing you further into the results instead of right
+// at the first pixel of the first row. Raise it to land lower on the
+// page (more grid visible past the fold); 0 = exactly flush with nav.
+const FILTER_SCROLL_OFFSET_PX = 80;
+
 export function Gallery() {
     const ref = useReveal<HTMLElement>();
+    const tabsListRef = useRef<HTMLDivElement | null>(null);
     const { t } = useLanguage();
     const [active, setActive] = useState<Category | 'all'>('all');
     const [time, setTime] = useState<TimeOfDay>('day');
     const [merged, setMerged] = useState(false);
+    const [atStart, setAtStart] = useState(true);
+    const [atEnd, setAtEnd] = useState(false);
     const visible = TILES.filter((tile) => (active === 'all' || tile.category === active) && tile.time === time);
 
     const TABS: { key: Category | 'all'; label: string }[] = [
@@ -102,15 +114,45 @@ export function Gallery() {
         };
     }, [ref]);
 
+    // Tracks which side(s) of the filter chip row currently have more
+    // content to reveal, so the edge fade only shows where it's true —
+    // fading the first chip when you're already scrolled all the way
+    // left (nothing more to reveal there) looks like a mistake, not a
+    // hint.
+    useEffect(() => {
+        const el = tabsListRef.current;
+        if (!el) return;
+
+        const updateEdges = () => {
+            setAtStart(el.scrollLeft <= 1);
+            setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1);
+        };
+
+        updateEdges();
+        el.addEventListener('scroll', updateEdges, { passive: true });
+        window.addEventListener('resize', updateEdges);
+        return () => {
+            el.removeEventListener('scroll', updateEdges);
+            window.removeEventListener('resize', updateEdges);
+        };
+    }, []);
+
     const selectTab = (key: Category | 'all') => {
         setActive(key);
-        const bar = ref.current?.querySelector('.gallery__tabs-bar');
-        if (!bar) return;
-        // Scroll exactly as far as the bar needs to travel to touch the
-        // nav — same measurement the merge check uses, so clicking a
-        // filter always lands precisely where the merge happens.
-        const delta = bar.getBoundingClientRect().top - navBottomPx();
-        window.scrollTo({ top: window.scrollY + delta, behavior: 'smooth' });
+        const heading = ref.current?.querySelector('.gallery__head');
+        if (!heading) return;
+        // Anchor on the heading, not the sticky bar. The bar's own
+        // position is useless as a reference once it's pinned — it
+        // reads the same "already flush" position whether you're one
+        // row in or scrolled through the whole grid, so a bar-relative
+        // check either compounds (scrolls further every click) or goes
+        // dead (never scrolls back up once stuck). The heading is
+        // normal-flow and never moves/pins, so its document-absolute
+        // position is a genuinely fixed target: the same click always
+        // computes the same destination regardless of current scroll.
+        const headingBottomDocY = heading.getBoundingClientRect().bottom + window.scrollY;
+        const target = headingBottomDocY - navBottomPx() + FILTER_SCROLL_OFFSET_PX;
+        window.scrollTo({ top: target, behavior: 'smooth' });
     };
 
     return (
@@ -153,7 +195,10 @@ export function Gallery() {
                             />
                         </svg>
                     </button>
-                    <div className="gallery__tabs-list">
+                    <div
+                        ref={tabsListRef}
+                        className={`gallery__tabs-list${atStart ? ' gallery__tabs-list--at-start' : ''}${atEnd ? ' gallery__tabs-list--at-end' : ''}`}
+                    >
                         {TABS.map((tab) => (
                             <button
                                 key={tab.key}

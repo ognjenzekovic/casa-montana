@@ -789,35 +789,82 @@ img {
   padding-right: 1.75rem;
 }
 
-/* Below this width the tabs wrap onto multiple rows, so the bar gets
-   tall — a 999px radius on a tall box carves a deep notch instead of
-   a corner. Cap it to a normal rounded-rect radius here instead. */
-@media (max-width: 719px) {
-  .gallery__tabs-bar {
-    border-radius: 28px;
-  }
-
-  .gallery__tabs-bar--merged {
-    border-radius: 0 0 28px 28px;
-  }
-}
-
 .gallery__tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.75rem;
 }
 
+/* Category filters scroll horizontally in one row instead of wrapping
+   onto multiple lines — the day/night toggle (a sibling, not a child
+   of this element) stays fixed outside the scroll area. flex-start
+   (not center) is deliberate: centering an overflowing flex row
+   starts the scroll position in the middle with the first chip
+   hidden off the left edge, which is the wrong default here. */
 .gallery__tabs-list {
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
   gap: 0.75rem;
+  min-width: 0;
+  overflow-x: auto;
+  /* The CSS overflow spec silently forces overflow-y to compute as
+     auto too whenever overflow-x isn't visible (they can't be
+     mismatched) — no way to opt out of that. With zero margin between
+     the auto-sized container and the buttons' actual height, small
+     cross-browser/cross-device differences in font line-height are
+     enough to tip it into clipping the buttons' bottom edge, which is
+     exactly what happened on a real phone even though it didn't
+     reproduce in headless testing. This padding is a real safety
+     margin, not cosmetic — don't remove it. */
+  padding: 0.4rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Fade the first/last ~28px of visible content instead of cutting
+     it off hard — a mask fades based on the element's own visible
+     box, not the scrolled content, so this stays pinned to the
+     viewport edges as you scroll rather than moving with the chips.
+     Using a mask (not a gradient overlay) means it works regardless
+     of the bar's current background color/opacity (default vs
+     merged) since it fades the buttons' own alpha, not paints over
+     them. */
+  mask-image: linear-gradient(to right, transparent 0, black 28px, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 28px,
+    black calc(100% - 28px),
+    transparent 100%
+  );
+}
+
+/* Only fade the side(s) that actually have more content to reveal —
+   .gallery__tabs-list--at-start/--at-end are toggled from JS based on
+   real scroll position. */
+.gallery__tabs-list.gallery__tabs-list--at-start {
+  mask-image: linear-gradient(to right, black 0, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0, black calc(100% - 28px), transparent 100%);
+}
+
+.gallery__tabs-list.gallery__tabs-list--at-end {
+  mask-image: linear-gradient(to right, transparent 0, black 28px, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 28px, black 100%);
+}
+
+.gallery__tabs-list--at-start.gallery__tabs-list--at-end {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.gallery__tabs-list::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery__tab {
+  flex-shrink: 0;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 600;
