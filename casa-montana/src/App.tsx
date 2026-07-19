@@ -9,12 +9,16 @@ import { Intro } from './components/Intro.tsx';
 import { Gallery } from './components/Gallery.tsx';
 import { Trust } from './components/Trust.tsx';
 import { Book } from './components/Book.tsx';
+import { LanguageProvider } from './lib/i18n.tsx';
+import { useLanguage } from './lib/languageContext';
 
-function App() {
+function AppContent() {
+  const { t } = useLanguage();
+
   return (
     <>
       <a className="skip-link" href="#main">
-        Preskoči na sadržaj
+        {t.skipLink}
       </a>
 
       <Nav />
@@ -33,6 +37,14 @@ function App() {
 
       <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

@@ -1,7 +1,9 @@
 import { useReveal } from '../hooks/useReveal';
+import { useLanguage } from '../lib/languageContext';
 
 export function Story() {
     const ref = useReveal<HTMLElement>();
+    const { t } = useLanguage();
 
     return (
         <section ref={ref} className="story reveal">
@@ -12,14 +14,12 @@ export function Story() {
                 />
             </div>
             <div className="story__text">
-                <p className="eyebrow story__eyebrow">Zanat</p>
-                <h2 className="story__title">Građena rukama, ne od kataloga</h2>
+                <p className="eyebrow story__eyebrow">{t.story.eyebrow}</p>
+                <h2 className="story__title">{t.story.title}</h2>
                 <p className="story__body">
-                    Dnevni boravak se otvara ka prostranoj terasi sa šporetom na drva —
-                    mesto gde se planina oseti i kada ste unutra. Kuhinja je potpuno
-                    opremljena, spavaće sobe imaju posteljinu{' '}
-                    <strong>lokalnih proizvođača</strong>, a kupatila prate isti nivo
-                    pažnje.
+                    {t.story.body.pre}
+                    <strong>{t.story.body.strong}</strong>
+                    {t.story.body.post}
                 </p>
             </div>
         </section>

@@ -1,30 +1,29 @@
 import { useReveal } from '../hooks/useReveal';
-
-type TrustItem = { value: string; label: string };
-
-const TRUST: TrustItem[] = [
-    { value: '5.0', label: 'Prosečna ocena gostiju' },
-    { value: '14', label: 'Utisaka' },
-    { value: '13', label: 'Godina ugošćavanja' },
-];
+import { useLanguage } from '../lib/languageContext';
 
 export function Trust() {
     const ref = useReveal<HTMLElement>();
+    const { t } = useLanguage();
+
+    const TRUST = [
+        { value: '5.0', label: t.trust.ratingLabel },
+        { value: '14', label: t.trust.reviewsLabel },
+        { value: '13', label: t.trust.yearsLabel },
+    ];
 
     return (
-        <section ref={ref} className="trust reveal" aria-label="Poverenje gostiju">
+        <section ref={ref} className="trust reveal" aria-label={t.trust.ratingLabel}>
             <div className="trust__row">
-                {TRUST.map((t) => (
-                    <div className="trust__item" key={t.label}>
-                        <span className="trust__value">{t.value}</span>
-                        <span className="trust__label">{t.label}</span>
+                {TRUST.map((item) => (
+                    <div className="trust__item" key={item.label}>
+                        <span className="trust__value">{item.value}</span>
+                        <span className="trust__label">{item.label}</span>
                     </div>
                 ))}
             </div>
             <blockquote className="trust__quote">
-                „Skrivena u šumi, daleko od 'urbanog Kopaonika' — komšije su jeleni i
-                veverice, a pored kuće protiče muzikalni potok.”
-                <cite>— iz utiska gosta, Booking.com</cite>
+                {t.trust.quote}
+                <cite>{t.trust.citation}</cite>
             </blockquote>
         </section>
     );

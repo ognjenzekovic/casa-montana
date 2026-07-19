@@ -1,7 +1,9 @@
 import { useReveal } from '../hooks/useReveal';
+import { useLanguage } from '../lib/languageContext';
 
 export function Location() {
     const ref = useReveal<HTMLElement>();
+    const { t } = useLanguage();
 
     return (
         <section ref={ref} className="location reveal">
@@ -15,16 +17,12 @@ export function Location() {
                     strokeLinecap="round"
                 />
             </svg>
-            <h2 className="location__title">Deset minuta od Nacionalnog parka</h2>
-            <p className="location__body">
-                Privatni parking, pristupni put koji se redovno čisti tokom zime, i
-                skijalište, planinarske staze i mir prirode na dohvat ruke — bez
-                kompromisa oko privatnosti.
-            </p>
+            <h2 className="location__title">{t.location.title}</h2>
+            <p className="location__body">{t.location.body}</p>
             <div className="location__map">
                 <iframe
-                    src="https://www.google.com/maps?q=43.2801,20.8123&z=14&output=embed"
-                    title="Casa Montana na mapi"
+                    src={`https://www.google.com/maps?q=43.2801,20.8123&z=14&hl=${t.location.mapLang}&output=embed`}
+                    title={t.location.mapTitle}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
@@ -32,11 +30,11 @@ export function Location() {
             </div>
             <a
                 className="location__map-link"
-                href="https://www.google.com/maps/search/?api=1&query=43.2801,20.8123"
+                href={`https://www.google.com/maps/search/?api=1&query=43.2801,20.8123&hl=${t.location.mapLang}`}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Otvorite u Google mapama ↗
+                {t.location.mapLink}
             </a>
         </section>
     );

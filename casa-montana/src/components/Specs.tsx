@@ -1,24 +1,20 @@
 import { useReveal } from '../hooks/useReveal';
-
-type SpecItem = {
-    value: string;
-    unit?: string;
-    label: string;
-};
-
-// TODO: replace [XXX] placeholders with real figures once confirmed
-const SPECS: SpecItem[] = [
-    { value: '2', label: 'Spavaće sobe' },
-    { value: '2', label: 'Kupatila' },
-    { value: '[XXX]', unit: 'm²', label: 'Stambeni prostor' },
-    { value: '[XXX]', unit: 'm²', label: 'Placa' },
-];
+import { useLanguage } from '../lib/languageContext';
 
 export function Specs() {
     const ref = useReveal<HTMLElement>();
+    const { t } = useLanguage();
+
+    // TODO: replace [XXX] placeholders with real figures once confirmed
+    const SPECS = [
+        { value: '2', label: t.specs.bedrooms },
+        { value: '2', label: t.specs.bathrooms },
+        { value: '[XXX]', unit: 'm²', label: t.specs.living },
+        { value: '[XXX]', unit: 'm²', label: t.specs.plot },
+    ];
 
     return (
-        <section ref={ref} className="specs reveal" aria-label="Osnovni podaci o nekretnini">
+        <section ref={ref} className="specs reveal" aria-label={t.specs.ariaLabel}>
             <div className="specs__grid">
                 {SPECS.map((s) => (
                     <div className="specs__item" key={s.label}>

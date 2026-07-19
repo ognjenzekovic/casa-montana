@@ -1,4 +1,8 @@
+import { useLanguage } from '../lib/languageContext';
+
 export function Hero() {
+    const { t } = useLanguage();
+
     return (
         <header className="hero">
             <div className="hero__media">
@@ -11,19 +15,16 @@ export function Hero() {
             <div className="hero__content">
                 <div className="hero__tags">
                     <a className="hero__badge" href="#contact">
-                        Na prodaju
+                        {t.hero.badge}
                     </a>
-                    <p className="eyebrow hero__eyebrow">Kopaonik, Srbija</p>
+                    <p className="eyebrow hero__eyebrow">{t.hero.location}</p>
                 </div>
                 <h1 className="hero__title">
                     Casa <em>Montana</em>
                 </h1>
                 <div className="hero__row">
-                    <p className="hero__lead">
-                        Ručno građena brvnara na ivici Nacionalnog parka Kopaonik. Jedna
-                        kuća, jedan posed, bez kompromisa.
-                    </p>
-                    <span className="hero__scroll">Pogledajte nekretninu ↓</span>
+                    <p className="hero__lead">{t.hero.lead}</p>
+                    <span className="hero__scroll">{t.hero.scroll}</span>
                 </div>
             </div>
         </header>

@@ -6,6 +6,7 @@
 
 :root {
   --nav-bottom: 5.5rem;
+  --nav-height: 3.5rem;
   /* Color: warm paper ground, ink text, one accent used sparingly */
   --ink: #17140F;
   /* warm near-black — headlines, body text     */
@@ -69,7 +70,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, p, blockquote {
+h1,
+h2,
+h3,
+p,
+blockquote {
   margin: 0;
 }
 
@@ -128,7 +133,7 @@ img {
   -webkit-backdrop-filter: blur(10px);
   border-radius: 999px;
   box-shadow: none;
-  transition: box-shadow 0.35s ease, border-radius 0.35s ease;
+  transition: box-shadow 0.35s ease, border-radius 0.35s ease, padding 0.35s ease;
 }
 
 .nav--scrolled {
@@ -142,6 +147,10 @@ img {
   -webkit-backdrop-filter: none;
   border-radius: 999px 999px 0 0;
   box-shadow: none;
+  /* Square corners lose the visual breathing room a rounded corner
+     gives nearby content, so nudge the label/links in a bit further. */
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
 }
 
 .nav__mark {
@@ -185,6 +194,101 @@ img {
 .nav--scrolled .nav__link:hover {
   color: var(--ink);
   border-color: var(--line-strong);
+}
+
+/* Inline fallback for narrower screens — see the .nav-lang media
+   query below for where the floating circle takes over instead. */
+.nav__lang-inline {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav__lang-inline:hover {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+
+.nav--scrolled .nav__lang-inline {
+  color: var(--ink-soft);
+  border-color: var(--line-strong);
+}
+
+.nav--scrolled .nav__lang-inline:hover {
+  background: var(--clay);
+  color: #fff;
+  border-color: var(--clay);
+}
+
+/* A separate floating pill, deliberately not part of .nav — same
+   look (background/blur/radius/transitions) but its own bubble,
+   positioned just past nav's own right edge using the identical
+   width formula so it tracks nav's edge without re-measuring it.
+   Only shown once the viewport is wide enough that nav has stopped
+   growing (capped at 82rem) and there's genuine slack space beside
+   it — below that, .nav uses the full available width and there's
+   nowhere for a separate bubble to go, so the inline twin takes
+   over instead (see .nav__lang-inline above). */
+.nav-lang {
+  display: none;
+  position: fixed;
+  top: calc(clamp(0.75rem, 2vw, 1.5rem) + (var(--nav-height) - 3.25rem) / 2);
+  left: calc(50% + min(calc(100vw - 2 * var(--gutter)), 82rem) / 2 + 1.5rem);
+  z-index: 40;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  aspect-ratio: 1 / 1;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background: rgba(23, 20, 15, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  padding: 0 0 0 0.2em;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav-lang:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+.nav-lang--scrolled {
+  background: rgba(247, 243, 234, 0.88);
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(23, 20, 15, 0.1);
+}
+
+.nav-lang--scrolled:hover {
+  background: var(--clay);
+  color: #fff;
+}
+
+@media (min-width: 1400px) {
+  .nav__lang-inline {
+    display: none;
+  }
+
+  .nav-lang {
+    display: flex;
+  }
 }
 
 .nav__cta {
@@ -244,6 +348,7 @@ img {
   from {
     transform: scale(1);
   }
+
   to {
     transform: scale(1.06);
   }
@@ -443,6 +548,60 @@ img {
   margin: 0 0 clamp(2rem, 5vw, 3.5rem);
 }
 
+.gallery__time-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 4.5rem;
+  height: 2.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper);
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+
+.gallery__time-toggle:hover {
+  border-color: var(--clay);
+}
+
+.gallery__time-thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(2.25rem - 2px);
+  height: calc(2.25rem - 2px);
+  border-radius: 999px;
+  background: #fff;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.gallery__time-toggle--night .gallery__time-thumb {
+  background: var(--ink);
+  transform: translateX(2.25rem);
+}
+
+.gallery__time-icon {
+  position: relative;
+  z-index: 1;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
+  pointer-events: none;
+}
+
+.gallery__time-toggle:not(.gallery__time-toggle--night) .gallery__time-icon:first-of-type {
+  color: var(--ink);
+}
+
+.gallery__time-toggle--night .gallery__time-icon:last-of-type {
+  color: var(--paper);
+}
+
 .gallery__title {
   font-family: var(--font-display);
   font-size: var(--step-h2);
@@ -462,7 +621,7 @@ img {
   padding: 0.85rem 1.25rem;
   border-radius: 999px;
   box-shadow: none;
-  transition: border-radius 0.35s ease, box-shadow 0.35s ease;
+  transition: border-radius 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
 }
 
 .gallery__tabs-bar--merged {
@@ -471,6 +630,10 @@ img {
   -webkit-backdrop-filter: none;
   border-radius: 0 0 999px 999px;
   box-shadow: 0 8px 24px rgba(23, 20, 15, 0.1);
+  /* Square corners lose the visual breathing room a rounded corner
+     gives nearby content, so nudge the toggle/tabs in a bit further. */
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
 }
 
 /* Below this width the tabs wrap onto multiple rows, so the bar gets
@@ -489,8 +652,16 @@ img {
 .gallery__tabs {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
+}
+
+.gallery__tabs-list {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.75rem;
 }
 
 .gallery__tab {
