@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../lib/languageContext';
 
-type Category = 'exterior' | 'living-room' | 'kitchen' | 'terrace' | 'bedroom' | 'bathroom';
+type Category = 'exterior' | 'living-room' | 'kitchen' | 'terrace' | 'bedroom' | 'bathroom' | 'sauna';
 type TimeOfDay = 'day' | 'night';
 
-const CATEGORY_ORDER: Category[] = ['exterior', 'living-room', 'kitchen', 'terrace', 'bedroom', 'bathroom'];
+const CATEGORY_ORDER: Category[] = ['exterior', 'living-room', 'kitchen', 'terrace', 'bedroom', 'bathroom', 'sauna'];
 
 // Auto-discovers every photo dropped into src/assets/gallery/<category>/ —
 // to add a photo, just put the file in the matching folder, no code

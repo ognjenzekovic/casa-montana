@@ -2,7 +2,7 @@ export type Locale = 'sr' | 'en';
 
 type StoryBody = { pre: string; strong: string; post: string };
 
-type CategoryKey = 'exterior' | 'living-room' | 'kitchen' | 'terrace' | 'bedroom' | 'bathroom';
+type CategoryKey = 'exterior' | 'living-room' | 'kitchen' | 'terrace' | 'bedroom' | 'bathroom' | 'sauna';
 
 export type Translations = {
     htmlLang: string;
@@ -77,6 +77,7 @@ const sr: Translations = {
             terrace: 'Terase',
             bedroom: 'Spavaće sobe',
             bathroom: 'Kupatila',
+            sauna: 'Sauna',
         },
     },
     story: {
@@ -167,6 +168,7 @@ const en: Translations = {
             terrace: 'Terrace',
             bedroom: 'Bedrooms',
             bathroom: 'Bathrooms',
+            sauna: 'Sauna',
         },
     },
     story: {
