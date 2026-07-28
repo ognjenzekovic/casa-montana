@@ -221,7 +221,7 @@ export function Gallery() {
                             <div className="gallery__tile" key={tile.id}>
                                 <img
                                     src={tile.src}
-                                    alt={`Casa Montana – ${t.gallery.categories[tile.category]}`}
+                                    alt={`${t.gallery.categories[tile.category]}${tile.time === 'night' ? t.gallery.nightSuffix : ''} — Casa Montana, ${t.gallery.altSuffix}`}
                                     loading="lazy"
                                     decoding="async"
                                 />

@@ -23,6 +23,7 @@ export type Translations = {
         nightAriaLabel: string;
         all: string;
         nightSuffix: string;
+        altSuffix: string;
         categories: Record<CategoryKey, string>;
     };
     story: { eyebrow: string; title: string; body: StoryBody };
@@ -36,9 +37,9 @@ export type Translations = {
 
 const sr: Translations = {
     htmlLang: 'sr',
-    pageTitle: 'Casa Montana — Kuća na Kopaoniku na prodaju',
+    pageTitle: 'Casa Montana — luksuzna brvnara sa saunom na Kopaoniku',
     metaDescription:
-        'Ručno građena brvnara na Kopaoniku, 10 minuta od Nacionalnog parka. Retka prilika za posed u srcu planine.',
+        'Luksuzna brvnara na Kopaoniku sa saunom i prostranim terasama, 10 minuta od Nacionalnog parka. Dostupna za izdavanje i prodaju.',
     skipLink: 'Preskoči na sadržaj',
     nav: { book: 'Rezervišite boravak', cta: 'Zakažite obilazak', langToggle: 'EN', menu: 'Meni' },
     hero: {
@@ -49,7 +50,7 @@ const sr: Translations = {
     },
     intro: {
         eyebrow: 'O kući',
-        statement: 'Kuća građena za jedan život, ne za jedan izdatak.',
+        statement: 'Kuća građena za jedan život, ne za jedan trenutak.',
         body: 'Casa Montana stoji na kraju naselja, okružena jelovom šumom, deset minuta od Nacionalnog parka Kopaonik. Svaka greda je birana i sečena za ovu kuću — ovo nije katalog, ovo je jedna, konkretna kuća.',
         blogCta: 'Pročitajte naš blog',
     },
@@ -70,6 +71,7 @@ const sr: Translations = {
         nightAriaLabel: 'Prikazane noćne fotografije — klikni za dnevne',
         all: 'Sve',
         nightSuffix: ' · noć',
+        altSuffix: 'luksuzna brvnara na Kopaoniku',
         categories: {
             exterior: 'Eksterijer',
             'living-room': 'Dnevni boravak',
@@ -90,7 +92,7 @@ const sr: Translations = {
         },
     },
     trust: {
-        ratingLabel: 'Prosečna ocena gostiju',
+        ratingLabel: 'Prosečna ocena na Airbnb-u',
         reviewsLabel: 'Utisaka',
         yearsLabel: 'Godina ugošćavanja',
         quote: '„Skrivena u šumi, daleko od \'urbanog Kopaonika\' — komšije su jeleni i veverice, a pored kuće protiče muzikalni potok.”',
@@ -99,7 +101,7 @@ const sr: Translations = {
     book: {
         eyebrow: 'Pre kupovine',
         title: 'Prenoćite pre nego što odlučite',
-        body: 'Casa Montana se aktivno izdaje i nosi ocenu 9.8/10 od gostiju. Rezervišite boravak i uverite se lično, pre nego što se odlučite.',
+        body: 'Casa Montana se aktivno izdaje i nosi ocenu 9.8/10 na Booking-u. Rezervišite boravak i uverite se lično, pre nego što se odlučite.',
         bookingBtn: 'Rezervišite na Booking.com',
         airbnbBtn: 'Rezervišite na Airbnb-u',
         followUs: 'Pratite nas na Instagramu',
@@ -127,9 +129,9 @@ const sr: Translations = {
 
 const en: Translations = {
     htmlLang: 'en',
-    pageTitle: 'Casa Montana — Mountain House for Sale in Kopaonik',
+    pageTitle: 'Casa Montana — Luxury Log Cabin with Sauna on Kopaonik',
     metaDescription:
-        'A hand-built log cabin in Kopaonik, 10 minutes from the National Park. A rare chance to own land at the heart of the mountain.',
+        'A luxury log cabin on Kopaonik with a sauna and spacious terraces, 10 minutes from the National Park. Available to rent and to buy.',
     skipLink: 'Skip to content',
     nav: { book: 'Book a Stay', cta: 'Schedule a Viewing', langToggle: 'SR', menu: 'Menu' },
     hero: {
@@ -140,7 +142,7 @@ const en: Translations = {
     },
     intro: {
         eyebrow: 'About the House',
-        statement: 'A house built for a lifetime, not a line item.',
+        statement: 'A house built for a lifetime, not a moment.',
         body: 'Casa Montana stands at the edge of the settlement, surrounded by fir forest, ten minutes from Kopaonik National Park. Every beam was chosen and cut for this house — this isn\'t a catalog, it\'s one specific house.',
         blogCta: 'Read Our Blog',
     },
@@ -161,6 +163,7 @@ const en: Translations = {
         nightAriaLabel: 'Showing night photos — click for daytime',
         all: 'All',
         nightSuffix: ' · night',
+        altSuffix: 'a luxury log cabin on Kopaonik',
         categories: {
             exterior: 'Exterior',
             'living-room': 'Living Room',
@@ -181,7 +184,7 @@ const en: Translations = {
         },
     },
     trust: {
-        ratingLabel: 'Average Guest Rating',
+        ratingLabel: 'Average Rating on Airbnb',
         reviewsLabel: 'Reviews',
         yearsLabel: 'Years Hosting',
         quote: '"Casa Montana has an exceptional location. Hidden in the forest, far from \'urban Kopaonik\' — the neighbors are deer and squirrels, and a musical stream runs past the house."',
@@ -190,7 +193,7 @@ const en: Translations = {
     book: {
         eyebrow: 'Before You Buy',
         title: 'Stay the Night Before You Decide',
-        body: 'Casa Montana is actively rented and holds a 9.8/10 guest rating. Book a stay and see it for yourself before you decide.',
+        body: 'Casa Montana is actively rented and holds a 9.8/10 rating on Booking. Book a stay and see it for yourself before you decide.',
         bookingBtn: 'Book on Booking.com',
         airbnbBtn: 'Book on Airbnb',
         followUs: 'Follow us on Instagram',
