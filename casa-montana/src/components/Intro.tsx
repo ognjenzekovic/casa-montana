@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 import { useLanguage } from '../lib/languageContext';
 
@@ -10,9 +11,9 @@ export function Intro() {
             <span className="eyebrow intro__eyebrow">{t.intro.eyebrow}</span>
             <p className="intro__statement">{t.intro.statement}</p>
             <p className="intro__body">{t.intro.body}</p>
-            <a className="intro__cta" href="#/blog">
+            <Link className="intro__cta" to="/blog">
                 {t.intro.blogCta}
-            </a>
+            </Link>
         </section>
     );
 }
