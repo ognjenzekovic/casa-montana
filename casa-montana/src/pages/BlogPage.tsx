@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../lib/languageContext';
 import { MOCK_BLOG_POSTS } from '../data/blogPosts.mock';
 
@@ -15,9 +16,9 @@ export function BlogPage() {
     return (
         <main id="main" className="blog-page">
             <div className="blog-page__inner">
-                <a className="blog-page__back" href="#">
+                <Link className="blog-page__back" to="/">
                     {t.blog.back}
-                </a>
+                </Link>
                 <span className="eyebrow">{t.blog.eyebrow}</span>
                 <h1 className="blog-page__title">{t.blog.title}</h1>
                 <div className="blog-page__list">
