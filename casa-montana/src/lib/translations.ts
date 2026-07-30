@@ -86,7 +86,7 @@ const sr: Translations = {
         eyebrow: 'Zanat',
         title: 'Drvo i vatra',
         body: {
-            pre: 'Dnevni boravak se otvara ka prostranoj terasi sa šporetom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Uveče, jedini zvuk spolja je potok koji teče pored kuće; posteljina u spavaćim sobama dolazi od ',
+            pre: 'Dnevni boravak se otvara ka prostranoj terasi sa kaminom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Uveče, jedini zvuk spolja je potok koji teče pored kuće; posteljina u spavaćim sobama dolazi od ',
             strong: 'lokalnih proizvođača',
             post: ', a kupatila prate isti nivo pažnje.',
         },
@@ -178,7 +178,7 @@ const en: Translations = {
         eyebrow: 'Craft',
         title: 'Wood and Fire',
         body: {
-            pre: 'The living room opens onto a spacious terrace with a wood-burning stove — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. In the evening, the only sound outside is the stream running past the house; the bedrooms are dressed in linens from ',
+            pre: 'The living room opens onto a spacious terrace with a wood-burning fireplace — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. In the evening, the only sound outside is the stream running past the house; the bedrooms are dressed in linens from ',
             strong: 'local makers',
             post: ', and the bathrooms carry the same level of care.',
         },
