@@ -39,19 +39,19 @@ const sr: Translations = {
     htmlLang: 'sr',
     pageTitle: 'Casa Montana — luksuzna brvnara sa saunom na Kopaoniku',
     metaDescription:
-        'Luksuzna brvnara na Kopaoniku sa saunom i prostranim terasama, 10 minuta od Nacionalnog parka. Dostupna za izdavanje i prodaju.',
+        'Luksuzna brvnara na Kopaoniku sa saunom i prostranim terasama, 5 minuta od Nacionalnog parka. Dostupna za izdavanje i prodaju.',
     skipLink: 'Preskoči na sadržaj',
     nav: { book: 'Rezervišite boravak', cta: 'Zakažite obilazak', langToggle: 'EN', menu: 'Meni' },
     hero: {
         badge: 'Na prodaju',
         location: 'Kopaonik, Srbija',
-        lead: 'Ručno građena brvnara na ivici Nacionalnog parka Kopaonik. Jedna kuća, jedan posed — okružena jelovom šumom, bez ijedne komšijske kuće na vidiku.',
+        lead: 'Ručno građena brvnara na ivici Nacionalnog parka Kopaonik.',
         scroll: 'Pogledajte kuću ↓',
     },
     intro: {
         eyebrow: 'O kući',
-        statement: 'Kuća građena za jedan život, ne za jedan trenutak.',
-        body: 'Svaka greda je birana i sečena tačno za ovu kuću. Casa Montana stoji na kraju naselja, poslednja pre nego što počinje šuma.',
+        statement: 'Svaka greda je sečena za ovu kuću, ne za sličnu.',
+        body: 'Casa Montana stoji na kraju naselja, pet minuta od Nacionalnog parka — poslednja kuća pre nego što put nestane u šumi.',
         blogCta: 'Pročitajte naš blog',
     },
     specs: {
@@ -84,9 +84,9 @@ const sr: Translations = {
     },
     story: {
         eyebrow: 'Zanat',
-        title: 'Napravljena rukama',
+        title: 'Drvo i vatra',
         body: {
-            pre: 'Dnevni boravak se otvara ka prostranoj terasi sa šporetom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Spavaće sobe imaju posteljinu ',
+            pre: 'Dnevni boravak se otvara ka prostranoj terasi sa šporetom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Uveče, jedini zvuk spolja je potok koji teče pored kuće; posteljina u spavaćim sobama dolazi od ',
             strong: 'lokalnih proizvođača',
             post: ', a kupatila prate isti nivo pažnje.',
         },
@@ -107,7 +107,7 @@ const sr: Translations = {
         followUs: 'Pratite nas na Instagramu',
     },
     location: {
-        title: 'Deset minuta od Nacionalnog parka',
+        title: 'Pet minuta od Nacionalnog parka',
         body: 'Privatni parking, pristupni put koji se redovno čisti tokom zime, skijalište i planinarske staze na dohvat ruke — a kuća ostaje potpuno vaša, bez pogleda suseda.',
         mapTitle: 'Casa Montana na mapi',
         mapLink: 'Otvorite u Google mapama ↗',
@@ -115,7 +115,7 @@ const sr: Translations = {
     },
     closer: {
         eyebrow: 'Zainteresovani?',
-        title: 'Retko se ovakav posed pojavi na tržištu.',
+        title: 'Kuće ovakve retko menjaju vlasnika.',
         cta: 'Zatražite informacije',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Srbija' },
@@ -131,19 +131,19 @@ const en: Translations = {
     htmlLang: 'en',
     pageTitle: 'Casa Montana — Luxury Log Cabin with Sauna on Kopaonik',
     metaDescription:
-        'A luxury log cabin on Kopaonik with a sauna and spacious terraces, 10 minutes from the National Park. Available to rent and to buy.',
+        'A luxury log cabin on Kopaonik with a sauna and spacious terraces, 5 minutes from the National Park. Available to rent and to buy.',
     skipLink: 'Skip to content',
     nav: { book: 'Book a Stay', cta: 'Schedule a Viewing', langToggle: 'SR', menu: 'Menu' },
     hero: {
         badge: 'For Sale',
         location: 'Kopaonik, Serbia',
-        lead: 'A hand-built log cabin on the edge of Kopaonik National Park. One house, one estate — surrounded by fir forest, with no neighboring house in sight.',
+        lead: 'A hand-built log cabin on the edge of Kopaonik National Park.',
         scroll: 'View the House ↓',
     },
     intro: {
         eyebrow: 'About the House',
-        statement: 'A house built for a lifetime, not a moment.',
-        body: 'Every beam was chosen and cut for this exact house. Casa Montana stands at the edge of the settlement, the last one before the forest begins.',
+        statement: 'Every beam was cut for this house, not a similar one.',
+        body: 'Casa Montana stands at the edge of the settlement, five minutes from the National Park — the last house before the road disappears into the forest.',
         blogCta: 'Read Our Blog',
     },
     specs: {
@@ -176,9 +176,9 @@ const en: Translations = {
     },
     story: {
         eyebrow: 'Craft',
-        title: 'Made by Hand',
+        title: 'Wood and Fire',
         body: {
-            pre: 'The living room opens onto a spacious terrace with a wood-burning stove — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. The bedrooms are dressed in linens from ',
+            pre: 'The living room opens onto a spacious terrace with a wood-burning stove — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. In the evening, the only sound outside is the stream running past the house; the bedrooms are dressed in linens from ',
             strong: 'local makers',
             post: ', and the bathrooms carry the same level of care.',
         },
@@ -199,7 +199,7 @@ const en: Translations = {
         followUs: 'Follow us on Instagram',
     },
     location: {
-        title: 'Ten Minutes from the National Park',
+        title: 'Five Minutes from the National Park',
         body: 'Private parking, an access road cleared regularly through winter, the ski resort and hiking trails within reach — and the house stays entirely yours, with no neighbors in view.',
         mapTitle: 'Casa Montana on the map',
         mapLink: 'Open in Google Maps ↗',
@@ -207,7 +207,7 @@ const en: Translations = {
     },
     closer: {
         eyebrow: 'Interested?',
-        title: 'A property like this rarely comes to market.',
+        title: 'Houses like this rarely change hands.',
         cta: 'Request Information',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Serbia' },
