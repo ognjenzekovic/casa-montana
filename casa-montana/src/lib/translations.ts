@@ -1,6 +1,5 @@
 export type Locale = 'sr' | 'en';
 
-type StoryBody = { pre: string; strong: string; post: string };
 
 type CategoryKey = 'exterior' | 'living-room' | 'kitchen' | 'terrace' | 'bedroom' | 'bathroom' | 'sauna';
 
@@ -26,7 +25,7 @@ export type Translations = {
         altSuffix: string;
         categories: Record<CategoryKey, string>;
     };
-    story: { eyebrow: string; title: string; body: StoryBody };
+    story: { eyebrow: string; title: string; body: string };
     trust: { ratingLabel: string; reviewsLabel: string; yearsLabel: string; quote: string; citation: string };
     book: { eyebrow: string; title: string; body: string; bookingBtn: string; airbnbBtn: string; followUs: string };
     location: { title: string; body: string; mapTitle: string; mapLink: string; mapLang: string };
@@ -45,12 +44,12 @@ const sr: Translations = {
     hero: {
         badge: 'Na prodaju',
         location: 'Kopaonik, Srbija',
-        lead: 'Ručno građena brvnara na ivici Nacionalnog parka Kopaonik.',
+        lead: 'Kompletno opremljena brvnara na ivici Nacionalnog parka Kopaonik.',
         scroll: 'Pogledajte kuću ↓',
     },
     intro: {
         eyebrow: 'O kući',
-        statement: 'Svaka greda je sečena za ovu kuću, ne za sličnu.',
+        statement: 'Luksuz i priroda u savršenoj harmoniji.',
         body: 'Casa Montana stoji na kraju naselja, pet minuta od Nacionalnog parka — poslednja kuća pre nego što put nestane u šumi.',
         blogCta: 'Pročitajte naš blog',
     },
@@ -63,7 +62,7 @@ const sr: Translations = {
     },
     gallery: {
         eyebrow: 'Galerija',
-        title: 'Prostor koji se oseti, ne samo vidi',
+        title: 'Upoznajte svaki kutak',
         filterAria: 'Filtriraj po prostoriji',
         dayNightAria: 'Dan ili noć',
         dayNightTitle: 'Dan / Noć',
@@ -85,11 +84,7 @@ const sr: Translations = {
     story: {
         eyebrow: 'Zanat',
         title: 'Drvo i vatra',
-        body: {
-            pre: 'Dnevni boravak se otvara ka prostranoj terasi sa kaminom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Uveče, jedini zvuk spolja je potok koji teče pored kuće; posteljina u spavaćim sobama dolazi od ',
-            strong: 'lokalnih proizvođača',
-            post: ', a kupatila prate isti nivo pažnje.',
-        },
+        body: 'Dnevni boravak se otvara ka prostranoj terasi sa kaminom na drva — mesto gde se planina oseti i kada ste unutra. U kuhinji ima sve što treba da se skuva večera za ceo sto. Uveče, jedini zvuk spolja je potok koji teče pored kuće; domaći mlečni proizvodi se mogu nabaviti kod komšije niz ulicu, a svi ostali sadržaji su na par minuta vožnje.',
     },
     trust: {
         ratingLabel: 'Prosečna ocena na Airbnb-u',
@@ -115,7 +110,7 @@ const sr: Translations = {
     },
     closer: {
         eyebrow: 'Zainteresovani?',
-        title: 'Kuće ovakve retko menjaju vlasnika.',
+        title: 'Vaša prilika za komad planine.',
         cta: 'Zatražite informacije',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Srbija' },
@@ -137,12 +132,12 @@ const en: Translations = {
     hero: {
         badge: 'For Sale',
         location: 'Kopaonik, Serbia',
-        lead: 'A hand-built log cabin on the edge of Kopaonik National Park.',
+        lead: 'A fully equipped log cabin on the edge of Kopaonik National Park.',
         scroll: 'View the House ↓',
     },
     intro: {
         eyebrow: 'About the House',
-        statement: 'Every beam was cut for this house, not a similar one.',
+        statement: 'Luxury and nature in perfect harmony.',
         body: 'Casa Montana stands at the edge of the settlement, five minutes from the National Park — the last house before the road disappears into the forest.',
         blogCta: 'Read Our Blog',
     },
@@ -155,7 +150,7 @@ const en: Translations = {
     },
     gallery: {
         eyebrow: 'Gallery',
-        title: 'A space you feel, not just see',
+        title: 'Explore every corner',
         filterAria: 'Filter by room',
         dayNightAria: 'Day or night',
         dayNightTitle: 'Day / Night',
@@ -177,11 +172,7 @@ const en: Translations = {
     story: {
         eyebrow: 'Craft',
         title: 'Wood and Fire',
-        body: {
-            pre: 'The living room opens onto a spacious terrace with a wood-burning fireplace — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. In the evening, the only sound outside is the stream running past the house; the bedrooms are dressed in linens from ',
-            strong: 'local makers',
-            post: ', and the bathrooms carry the same level of care.',
-        },
+        body: 'The living room opens onto a spacious terrace with a wood-burning fireplace — a place where the mountain is felt even indoors. The kitchen has everything you need to cook dinner for a full table. In the evening, the only sound outside is the stream running past the house; fresh local dairy products can be found at the neighbor\'s down the street, with all other amenities just a few minutes\' drive away.',
     },
     trust: {
         ratingLabel: 'Average Rating on Airbnb',
@@ -207,7 +198,7 @@ const en: Translations = {
     },
     closer: {
         eyebrow: 'Interested?',
-        title: 'Houses like this rarely change hands.',
+        title: 'Your chance to own a piece of the mountain.',
         cta: 'Request Information',
     },
     footer: { copyright: '© 2026 Casa Montana · Kopaonik, Serbia' },

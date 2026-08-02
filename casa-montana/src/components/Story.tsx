@@ -17,9 +17,7 @@ export function Story() {
                 <p className="eyebrow story__eyebrow">{t.story.eyebrow}</p>
                 <h2 className="story__title">{t.story.title}</h2>
                 <p className="story__body">
-                    {t.story.body.pre}
-                    <strong>{t.story.body.strong}</strong>
-                    {t.story.body.post}
+                    {t.story.body}
                 </p>
                 <a className="story__cta" href="#contact">
                     {t.closer.cta}

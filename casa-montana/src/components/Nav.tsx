@@ -100,6 +100,16 @@ export function Nav() {
                 className={`nav${isScrolled ? ' nav--scrolled' : ''}${merged ? ' nav--merged' : ''}`}
             >
                 <a className="nav__mark" href="#" onClick={goHome}>
+                    <svg className="nav__logo" viewBox="0 0 64 40" aria-hidden="true">
+                        <path
+                            d="M2 36 L18 12 L26 24 L34 6 L48 30 L54 20 L62 36"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                        />
+                    </svg>
                     Casa&nbsp;Montana
                 </a>
                 <div className="nav__links">

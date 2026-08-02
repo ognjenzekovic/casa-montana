@@ -154,6 +154,9 @@ img {
 }
 
 .nav__mark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
@@ -162,6 +165,11 @@ img {
   text-decoration: none;
   cursor: pointer;
   transition: color 0.35s ease;
+}
+
+.nav__logo {
+  width: 1.5rem;
+  height: auto;
 }
 
 .nav--scrolled .nav__mark {
@@ -1224,6 +1232,11 @@ img {
   color: var(--paper);
   padding: var(--section-pad) var(--gutter);
   text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .closer__eyebrow {
