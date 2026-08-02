@@ -11,6 +11,7 @@ import { Gallery } from './components/Gallery.tsx';
 import { Trust } from './components/Trust.tsx';
 import { Book } from './components/Book.tsx';
 import { BlogPage } from './pages/BlogPage.tsx';
+import { BlogPostPage } from './pages/BlogPostPage.tsx';
 import { LanguageProvider } from './lib/i18n.tsx';
 import { useLanguage } from './lib/languageContext';
 import { useEffect } from 'react';
@@ -55,7 +56,8 @@ function AppContent() {
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/blog/*" element={<BlogPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogPostPage />} />
       </Routes>
       <Footer />
     </>
