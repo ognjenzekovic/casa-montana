@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../lib/languageContext';
 import { MOCK_BLOG_POSTS } from '../data/blogPosts.mock';
