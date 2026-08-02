@@ -13,7 +13,7 @@ export function BlogPage() {
     const [searchParams, setSearchParams] = useSearchParams();
     const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-    const dateFormatter = new Intl.DateTimeFormat(locale === 'sr' ? 'sr-RS' : 'en-US', {
+    const dateFormatter = new Intl.DateTimeFormat(locale === 'sr' ? 'sr-Latn-RS' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',

@@ -21,7 +21,7 @@ export function BlogPostPage() {
         );
     }
 
-    const dateFormatter = new Intl.DateTimeFormat(locale === 'sr' ? 'sr-RS' : 'en-US', {
+    const dateFormatter = new Intl.DateTimeFormat(locale === 'sr' ? 'sr-Latn-RS' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
