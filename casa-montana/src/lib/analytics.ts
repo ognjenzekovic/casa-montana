@@ -7,7 +7,7 @@ declare global {
     }
 }
 
-export function trackOutboundClick(destination: 'booking' | 'airbnb' | 'instagram' | 'contact') {
+export function trackOutboundClick(destination: 'booking' | 'airbnb' | 'instagram' | 'contact' | 'phone' | 'email') {
     window.gtag?.('event', 'outbound_click', {
         event_category: 'engagement',
         event_label: destination,
